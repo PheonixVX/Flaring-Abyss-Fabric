@@ -12,23 +12,24 @@ import net.minecraft.util.registry.Registry;
 // You know... if you renamed the Registry classes, we would not have this problem. Try `RegistryItem` for a change. -PheonixVX
 public class ItemRegistry extends com.remodstudios.yarnandneedles.items.ItemRegistry {
     public static final ItemRegistry INSTANCE = new ItemRegistry();
+    public static final BlockRegistry BLOCKS = new BlockRegistry();
 
-    private static final ItemGroup GROUP = FabricItemGroupBuilder.build(new Identifier(FlaringAbyssMain.MOD_ID,"group"), () -> new ItemStack(BlockRegistry.WILTSLATE));
+    private static final ItemGroup GROUP = FabricItemGroupBuilder.build(new Identifier(FlaringAbyssMain.MOD_ID,"group"), () -> new ItemStack(BLOCKS.WILTSLATE));
 
     // "Items go here" - LePichu
-    public static final Item SCYTHE = register(new SwordItem(ToolMaterials.NETHERITE, 8, -2.4F, new Item.Settings().group(GROUP).maxCount(1)), "scythe");
-    public static final Item CRYSTAL_METH = register(new Item(new Item.Settings().food(new FoodComponent.Builder().build()).group(GROUP)), "crystal_meth");
-    public static final Item SUCCUBUS_MILK = register(new Item(new Item.Settings().food(new FoodComponent.Builder().alwaysEdible().snack().hunger(10).saturationModifier(10F).build()).group(GROUP)), "succubus_milk");
-    public static final Item STYGIAN_IRON_SWORD = register(new StygianSword(ToolMaterials.IRON, 4, -2.4F, new Item.Settings().group(GROUP).maxCount(1)), "stygian_iron_sword");
-    public static final Item STYGIAN_IRON_AXE = register(new StygianAxe(ToolMaterials.IRON, 4, -2.4F, new Item.Settings().group(GROUP).maxCount(1)), "stygian_iron_axe");
-    public static final Item STYGIAN_IRON_PICKAXE = register(new StygianPickaxe(ToolMaterials.IRON, 4, -2.4F, new Item.Settings().group(GROUP).maxCount(1)), "stygian_iron_pickaxe");
-    public static final Item STYGIAN_IRON_SHOVEL = register(new StygianShovel(ToolMaterials.IRON, 4, -2.4F, new Item.Settings().group(GROUP).maxCount(1)), "stygian_iron_shovel");
-    public static final Item STYGIAN_IRON_HOE = register(new StygianHoe(ToolMaterials.IRON, 4, -2.4F, new Item.Settings().group(GROUP).maxCount(1)), "stygian_iron_hoe");
+    public final Item SCYTHE = add("scythe", new SwordItem(ToolMaterials.NETHERITE, 8, -2.4F, new Item.Settings().group(GROUP).maxCount(1)));
+    public final Item CRYSTAL_METH = add("crystal_meth", new Item(new Item.Settings().food(new FoodComponent.Builder().build()).group(GROUP)));
+    public final Item SUCCUBUS_MILK = add("succubus_milk", new Item( new Item.Settings().food(new FoodComponent.Builder().alwaysEdible().snack().hunger(10).saturationModifier(10F).build()).group(GROUP)));
+    public final Item STYGIAN_IRON_SWORD = add("stygian_iron_sword", new StygianSword(ToolMaterials.IRON, 4, -2.4F, new Item.Settings().group(GROUP).maxCount(1)));
+    public final Item STYGIAN_IRON_AXE = add("stygian_iron_axe", new StygianAxe(ToolMaterials.IRON, 4, -2.4F, new Item.Settings().group(GROUP).maxCount(1)));
+    public final Item STYGIAN_IRON_PICKAXE = add("stygian_iron_pickaxe", new StygianPickaxe(ToolMaterials.IRON, 4, -2.4F, new Item.Settings().group(GROUP).maxCount(1)));
+    public final Item STYGIAN_IRON_SHOVEL = add("stygian_iron_shovel", new StygianShovel(ToolMaterials.IRON, 4, -2.4F, new Item.Settings().group(GROUP).maxCount(1)));
+    public final Item STYGIAN_IRON_HOE = add("stygian_iron_hoe", new StygianHoe(ToolMaterials.IRON, 4, -2.4F, new Item.Settings().group(GROUP).maxCount(1)));
 
     // "Block Items go blocky @ here" - LePichu, again
-    public static final Item WILTSLATE = register(BlockRegistry.WILTSLATE, "wiltslate", new Item.Settings().group(GROUP));
-    public static final Item WILTSLATE_BRICKS = register(BlockRegistry.WILTSLATE_BRICKS, "wiltslate_bricks.json", new Item.Settings().group(GROUP));
-    public static final Item BASALT_IRON_ORE = register(BlockRegistry.BASALT_IRON_ORE, "basalt_iron_ore", new Item.Settings().group(GROUP));
+    public static final Item WILTSLATE = register(BLOCKS.WILTSLATE, "wiltslate", new Item.Settings().group(GROUP));
+    public static final Item WILTSLATE_BRICKS = register(BLOCKS.WILTSLATE_BRICKS, "wiltslate_bricks.json", new Item.Settings().group(GROUP));
+    public static final Item BASALT_IRON_ORE = register(BLOCKS.BASALT_IRON_ORE, "basalt_iron_ore", new Item.Settings().group(GROUP));
 
     public ItemRegistry (String namespace) {
         super(FlaringAbyssMain.MOD_ID);

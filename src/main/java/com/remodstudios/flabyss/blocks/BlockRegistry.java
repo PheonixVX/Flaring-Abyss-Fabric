@@ -12,9 +12,9 @@ public class BlockRegistry extends com.remodstudios.yarnandneedles.blocks.BlockR
 
     // "cube-things go here" - LePichu
     /// Registry not registery, and blocks - PheonixVX
-    public static final Block WILTSLATE = register(new Block(FabricBlockSettings.copyOf(Blocks.STONE)),"wiltslate");
-    public static final Block WILTSLATE_BRICKS = register(new Block(FabricBlockSettings.copyOf(Blocks.STONE_BRICKS)), "wiltslate_bricks.json");
-    public static final Block BASALT_IRON_ORE = register(new Block(FabricBlockSettings.copyOf(Blocks.BASALT)), "basalt_iron_ore");
+    public final Block WILTSLATE = add("wiltslate", new Block(FabricBlockSettings.copyOf(Blocks.STONE)));
+    public final Block WILTSLATE_BRICKS = add("wiltslate_bricks", new Block(FabricBlockSettings.copyOf(Blocks.STONE_BRICKS)));
+    public final Block BASALT_IRON_ORE = add("basalt_iron_ore", new Block(FabricBlockSettings.copyOf(Blocks.BASALT)));
 
     /**
      * @param namespace A string instance used to construct the BlockRegistry of Yarn and Needles.

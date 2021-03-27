@@ -16,7 +16,8 @@ public class CrystalMethDosageCounterMixin {
 
     @Inject(at = @At("HEAD"), method = "eatFood")
     public void eatFoodInject (World world, ItemStack stack, CallbackInfoReturnable<ItemStack> cir) {
-        if (stack.getItem().equals(ItemRegistry.CRYSTAL_METH) && stack.getMaxUseTime() == 1.6) {
+        ItemRegistry registry = new ItemRegistry();
+        if (stack.getItem().equals(registry.CRYSTAL_METH) && stack.getMaxUseTime() == 1.6) {
             dosageCounter++;
             int deathChance = world.random.nextInt(10) + dosageCounter;
             if (10 < deathChance) {
