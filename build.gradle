@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '0.5-SNAPSHOT'
+	id 'fabric-loom' version '0.6-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -34,8 +34,22 @@ dependencies {
 	}
 	 */
 
-	modApi "com.github.ReMod-Studios:yarn-and-needles:$ynn_version"
+	modImplementation "com.github.natanfudge:artifice:1.17-SNAPSHOT"
+	include "com.github.natanfudge:artifice:1.17-SNAPSHOT"
+
+	modApi ("com.github.ReMod-Studios:yarn-and-needles:$ynn_version") {
+	}
 	include "com.github.ReMod-Studios:yarn-and-needles:$ynn_version"
+}
+
+configurations.all {
+	resolutionStrategy {
+		dependencySubstitution {
+			substitute module('com.lettuce.fudge:artifice:0.14.6+1.16.5') with module('com.github.natanfudge:artifice:1.17-SNAPSHOT')
+			substitute module('com.lettuce.fudge:artifice:0.14.6+1.16.5') with module('com.github.natanfudge:artifice:1.17-SNAPSHOT')
+		}
+		force 'com.github.natanfudge:artifice:1.17-SNAPSHOT'
+	}
 }
 
 processResources {

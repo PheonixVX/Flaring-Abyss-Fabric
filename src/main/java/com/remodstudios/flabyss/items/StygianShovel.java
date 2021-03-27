@@ -1,4 +1,4 @@
-package com.remodstudios.flabyss.items_package;
+package com.remodstudios.flabyss.items;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;

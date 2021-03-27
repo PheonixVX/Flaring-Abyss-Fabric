@@ -1,7 +1,7 @@
 package com.remodstudios.flabyss;
 
-import com.remodstudios.flabyss.blocks_package.BlocksRegistery;
-import com.remodstudios.flabyss.items_package.ItemRegistery;
+import com.remodstudios.flabyss.blocks.BlockRegistry;
+import com.remodstudios.flabyss.items.ItemRegistry;
 import com.swordglowsblue.artifice.api.Artifice;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
@@ -27,8 +27,8 @@ public class FlaringAbyssMain implements ModInitializer {
         log(Level.INFO, "Initializing");
         //TODO: Initializer
         Artifice.registerDataPack(id("artifice_rp"), pack -> {
-            ItemRegistery.INSTANCE.generateData(pack);
-            BlocksRegistery.INSTANCE.generateData(pack);
+            ItemRegistry.INSTANCE.generateData(pack);
+            BlockRegistry.INSTANCE.generateData(pack);
 
             try {
                 pack.dumpResources("artifice.dbg", "data");

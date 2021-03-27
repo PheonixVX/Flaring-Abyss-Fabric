@@ -17,7 +17,7 @@
       "com.remodstudios.flabyss.FlaringAbyssMain"
     ],
     "client": [
-      "com.remodstudios.flabyss.client_package.FlabyssClient"
+      "com.remodstudios.flabyss.client.FlaringAbyssClient"
     ],
     "server": []
   },

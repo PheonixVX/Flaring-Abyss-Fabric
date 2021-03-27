@@ -1,8 +1,7 @@
-package com.remodstudios.flabyss.items_package;
+package com.remodstudios.flabyss.items;
 
 import com.remodstudios.flabyss.FlaringAbyssMain;
-import com.remodstudios.flabyss.blocks_package.BlocksRegistery;
-import com.remodstudios.yarnandneedles.items.ItemRegistry;
+import com.remodstudios.flabyss.blocks.BlockRegistry;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.item.*;
@@ -10,10 +9,11 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 @SuppressWarnings("unused")
-public class ItemRegistery extends ItemRegistry {
-    public static final ItemRegistery INSTANCE = new ItemRegistery();
+// You know... if you renamed the Registry classes, we would not have this problem. Try `RegistryItem` for a change. -PheonixVX
+public class ItemRegistry extends com.remodstudios.yarnandneedles.items.ItemRegistry {
+    public static final ItemRegistry INSTANCE = new ItemRegistry();
 
-    private static final ItemGroup GROUP = FabricItemGroupBuilder.build(new Identifier(FlaringAbyssMain.MOD_ID,"group"), () -> new ItemStack(BlocksRegistery.WILTSLATE));
+    private static final ItemGroup GROUP = FabricItemGroupBuilder.build(new Identifier(FlaringAbyssMain.MOD_ID,"group"), () -> new ItemStack(BlockRegistry.WILTSLATE));
 
     // "Items go here" - LePichu
     public static final Item SCYTHE = register(new SwordItem(ToolMaterials.NETHERITE, 8, -2.4F, new Item.Settings().group(GROUP).maxCount(1)), "scythe");
@@ -26,21 +26,39 @@ public class ItemRegistery extends ItemRegistry {
     public static final Item STYGIAN_IRON_HOE = register(new StygianHoe(ToolMaterials.IRON, 4, -2.4F, new Item.Settings().group(GROUP).maxCount(1)), "stygian_iron_hoe");
 
     // "Block Items go blocky @ here" - LePichu, again
-    public static final Item WILTSLATE = register(BlocksRegistery.WILTSLATE, "wiltslate", new Item.Settings().group(GROUP));
-    public static final Item WILTSLATE_BRICKS = register(BlocksRegistery.WILTSLATE_BRICKS, "wiltslate_bricks.json", new Item.Settings().group(GROUP));
+    public static final Item WILTSLATE = register(BlockRegistry.WILTSLATE, "wiltslate", new Item.Settings().group(GROUP));
+    public static final Item WILTSLATE_BRICKS = register(BlockRegistry.WILTSLATE_BRICKS, "wiltslate_bricks.json", new Item.Settings().group(GROUP));
+    public static final Item BASALT_IRON_ORE = register(BlockRegistry.BASALT_IRON_ORE, "basalt_iron_ore", new Item.Settings().group(GROUP));
 
-    public ItemRegistery(String namespace) {
+    public ItemRegistry (String namespace) {
         super(FlaringAbyssMain.MOD_ID);
     }
 
-    public ItemRegistery() {
+    public ItemRegistry () {
         super(FlaringAbyssMain.MOD_ID);
     }
 
+    /**
+     * This method returns and registers an Item instance.
+     *
+     * @param item Item is used for settings, and other Item-based things
+     * @param name Name is used as as apart of the Identifier/ResourceLocation for registration.
+     * @return Returns an instance of Item with pre-configured settings.
+     */
     private static Item register(Item item, String name) {
         return Registry.register(Registry.ITEM, new Identifier(FlaringAbyssMain.MOD_ID, name), item);
     }
 
+    /**
+     * This method registers BlockItems with pre-configured settings.
+     *
+     * @param block Block is used to register a BlockItem, according to the Block's settings.
+     * @param name Name is used as as apart of the Identifier/ResourceLocation for registration.
+     * @param settings Settings are used for configuring the BlockItem, in different ways than a Block would be.
+     * @return Returns an Item instance, with pre-configured settings for BlockItems.
+     *
+     * @see BlockRegistry
+     */
     private static Item register(Block block, String name, Item.Settings settings) {
         return register(new BlockItem(block, settings), name);
     }

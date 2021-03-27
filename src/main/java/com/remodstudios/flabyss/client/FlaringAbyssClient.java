@@ -1,19 +1,19 @@
-package com.remodstudios.flabyss.client_package;
+package com.remodstudios.flabyss.client;
 
 import com.remodstudios.flabyss.FlaringAbyssMain;
-import com.remodstudios.flabyss.blocks_package.BlocksRegistery;
-import com.remodstudios.flabyss.items_package.ItemRegistery;
+import com.remodstudios.flabyss.blocks.BlockRegistry;
+import com.remodstudios.flabyss.items.ItemRegistry;
 import com.swordglowsblue.artifice.api.Artifice;
 import net.fabricmc.api.ClientModInitializer;
 
 import java.io.IOException;
 
-public class FlabyssClient implements ClientModInitializer {
+public class FlaringAbyssClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         Artifice.registerAssetPack(FlaringAbyssMain.id("artifice_rp"), pack -> {
-            ItemRegistery.INSTANCE.generateAssets(pack);
-            BlocksRegistery.INSTANCE.generateAssets(pack);
+            ItemRegistry.INSTANCE.generateAssets(pack);
+            BlockRegistry.INSTANCE.generateAssets(pack);
 
             try {
                 pack.dumpResources("artifice.dbg", "assets");
